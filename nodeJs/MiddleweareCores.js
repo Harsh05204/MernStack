@@ -2,6 +2,18 @@ const express = require('express');
 const app = express();
 const port = 3005;
 
+const middlewere = (req,res,next) =>{
+     const hostname =req.hostname;
+     const url = req.url;
+     console.log(hostname);
+     console.log(url);
+     console.log(new Date());
+     
+     next();
+}
+
+app.use(middlewere)
+
 app.get("/add",function(req,res){
    const a = parseInt(req.query.a);
    const b = parseInt(req.query.b);
